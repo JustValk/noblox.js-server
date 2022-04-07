@@ -28,7 +28,7 @@ let Utility = require("./utility/functions.js"); // Module containing utility fu
 // Express Initialization
 
 let app = express();
-let port = process.env.PORT || 8080;
+let port = process.env.PORT || 80;
 
 app.set("env", "production");
 app.use(BodyParser.json()); // Helpful for parsing the body into JSON
@@ -49,6 +49,7 @@ app.post("/SetRank", SetRank(), Validate, function (req, res, next) {
     let Group = req.body.Group
     let Target = req.body.Target
     let Rank = req.body.Rank
+    let AUTH_KEY = req.body.AUTH_KEY
 
     Utility.SetRank(res, Group, Target, Rank) // Use the Utility.SetRank function to set the rank
         .catch(err => {
